@@ -1,0 +1,8 @@
+version: v1
+name: github.com/webook-project-go/webook-apis
+lint:
+  use:
+    - DEFAULT
+breaking:
+  use:
+    - FILE
