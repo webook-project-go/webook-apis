@@ -99,7 +99,8 @@ func (x *Interactive) GetLikeCnt() int64 {
 
 type GetInteractiveRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	BizId         int64                  `protobuf:"varint,1,opt,name=biz_id,json=bizId,proto3" json:"biz_id,omitempty"`
+	Biz           string                 `protobuf:"bytes,1,opt,name=biz,proto3" json:"biz,omitempty"`
+	BizId         int64                  `protobuf:"varint,2,opt,name=biz_id,json=bizId,proto3" json:"biz_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -132,6 +133,13 @@ func (x *GetInteractiveRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetInteractiveRequest.ProtoReflect.Descriptor instead.
 func (*GetInteractiveRequest) Descriptor() ([]byte, []int) {
 	return file_apis_interactive_v1_interactive_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetInteractiveRequest) GetBiz() string {
+	if x != nil {
+		return x.Biz
+	}
+	return ""
 }
 
 func (x *GetInteractiveRequest) GetBizId() int64 {
@@ -187,7 +195,8 @@ func (x *GetInteractiveResponse) GetInteractive() *Interactive {
 
 type IncrReadCntRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	BizId         int64                  `protobuf:"varint,1,opt,name=biz_id,json=bizId,proto3" json:"biz_id,omitempty"`
+	Biz           string                 `protobuf:"bytes,1,opt,name=biz,proto3" json:"biz,omitempty"`
+	BizId         int64                  `protobuf:"varint,2,opt,name=biz_id,json=bizId,proto3" json:"biz_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -220,6 +229,13 @@ func (x *IncrReadCntRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use IncrReadCntRequest.ProtoReflect.Descriptor instead.
 func (*IncrReadCntRequest) Descriptor() ([]byte, []int) {
 	return file_apis_interactive_v1_interactive_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *IncrReadCntRequest) GetBiz() string {
+	if x != nil {
+		return x.Biz
+	}
+	return ""
 }
 
 func (x *IncrReadCntRequest) GetBizId() int64 {
@@ -267,8 +283,9 @@ func (*IncrReadCntResponse) Descriptor() ([]byte, []int) {
 
 type IncrLikeCntRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	BizId         int64                  `protobuf:"varint,1,opt,name=biz_id,json=bizId,proto3" json:"biz_id,omitempty"`
-	Uid           int64                  `protobuf:"varint,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Biz           string                 `protobuf:"bytes,1,opt,name=biz,proto3" json:"biz,omitempty"`
+	BizId         int64                  `protobuf:"varint,2,opt,name=biz_id,json=bizId,proto3" json:"biz_id,omitempty"`
+	Uid           int64                  `protobuf:"varint,3,opt,name=uid,proto3" json:"uid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -301,6 +318,13 @@ func (x *IncrLikeCntRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use IncrLikeCntRequest.ProtoReflect.Descriptor instead.
 func (*IncrLikeCntRequest) Descriptor() ([]byte, []int) {
 	return file_apis_interactive_v1_interactive_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *IncrLikeCntRequest) GetBiz() string {
+	if x != nil {
+		return x.Biz
+	}
+	return ""
 }
 
 func (x *IncrLikeCntRequest) GetBizId() int64 {
@@ -363,17 +387,20 @@ const file_apis_interactive_v1_interactive_proto_rawDesc = "" +
 	"\x03biz\x18\x02 \x01(\tR\x03biz\x12\x15\n" +
 	"\x06biz_id\x18\x03 \x01(\x03R\x05bizId\x12\x19\n" +
 	"\bread_cnt\x18\x04 \x01(\x03R\areadCnt\x12\x19\n" +
-	"\blike_cnt\x18\x05 \x01(\x03R\alikeCnt\".\n" +
-	"\x15GetInteractiveRequest\x12\x15\n" +
-	"\x06biz_id\x18\x01 \x01(\x03R\x05bizId\"H\n" +
+	"\blike_cnt\x18\x05 \x01(\x03R\alikeCnt\"@\n" +
+	"\x15GetInteractiveRequest\x12\x10\n" +
+	"\x03biz\x18\x01 \x01(\tR\x03biz\x12\x15\n" +
+	"\x06biz_id\x18\x02 \x01(\x03R\x05bizId\"H\n" +
 	"\x16GetInteractiveResponse\x12.\n" +
-	"\vinteractive\x18\x01 \x01(\v2\f.InteractiveR\vinteractive\"+\n" +
-	"\x12IncrReadCntRequest\x12\x15\n" +
-	"\x06biz_id\x18\x01 \x01(\x03R\x05bizId\"\x15\n" +
-	"\x13IncrReadCntResponse\"=\n" +
-	"\x12IncrLikeCntRequest\x12\x15\n" +
-	"\x06biz_id\x18\x01 \x01(\x03R\x05bizId\x12\x10\n" +
-	"\x03uid\x18\x02 \x01(\x03R\x03uid\"\x15\n" +
+	"\vinteractive\x18\x01 \x01(\v2\f.InteractiveR\vinteractive\"=\n" +
+	"\x12IncrReadCntRequest\x12\x10\n" +
+	"\x03biz\x18\x01 \x01(\tR\x03biz\x12\x15\n" +
+	"\x06biz_id\x18\x02 \x01(\x03R\x05bizId\"\x15\n" +
+	"\x13IncrReadCntResponse\"O\n" +
+	"\x12IncrLikeCntRequest\x12\x10\n" +
+	"\x03biz\x18\x01 \x01(\tR\x03biz\x12\x15\n" +
+	"\x06biz_id\x18\x02 \x01(\x03R\x05bizId\x12\x10\n" +
+	"\x03uid\x18\x03 \x01(\x03R\x03uid\"\x15\n" +
 	"\x13IncrLikeCntResponse2\xcb\x01\n" +
 	"\x12InteractiveService\x12A\n" +
 	"\x0eGetInteractive\x12\x16.GetInteractiveRequest\x1a\x17.GetInteractiveResponse\x128\n" +
