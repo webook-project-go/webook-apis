@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+option go_package = "github.com/webook-project-go/webook-apis/gen/go/apis/comment/v1";
+
+service CommentService {
+  rpc GetList(GetListRequest) returns (GetListResponse);
+  rpc GetReplies(GetRepliesRequest) returns (GetRepliesResponse);
+
+  rpc Create(CreateCommentRequest) returns (CreateCommentResponse);
+  rpc Reply(ReplyCommentRequest) returns (ReplyCommentResponse);
+  rpc Delete(DeleteCommentRequest) returns (DeleteCommentResponse);
+}
+
+message Comment {
+  int64 id = 1;
+  int64 uid = 2;
+  int64 pid = 3;
+  int64 rid = 4;
+
+  string biz = 5;
+  int64 biz_id = 6;
+
+  string content = 7;
+  int64 ctime = 8;
+}
+
+message GetListRequest {
+  string biz = 1;
+  int64 biz_id = 2;
+  int64 min_id = 3;
+  int32 limit = 4;
+}
+
+message GetListResponse {
+  repeated Comment comments = 1;
+}
+
+
+message GetRepliesRequest {
+  int64 pid = 1;
+  int64 min_id = 2;
+  int32 limit = 3;
+}
+
+message GetRepliesResponse {
+  repeated Comment comments = 1;
+}
+
+message CreateCommentRequest {
+  Comment comment = 1;
+}
+
+message CreateCommentResponse {
+  int64 id = 1;
+}
+
+message ReplyCommentRequest {
+  Comment comment = 1;
+}
+
+message ReplyCommentResponse {
+  int64 id = 1;
+}
+
+message DeleteCommentRequest {
+  int64 id = 1;
+  int64 uid = 2;
+}
+
+message DeleteCommentResponse {
+}
+
