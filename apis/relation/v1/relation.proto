@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option go_package = "github.com/webook-project-go/webook-apis/gen/go/apis/relation/v1";
+
+import "google/protobuf/empty.proto";
+
+message RelationInfo {
+  int64 follower = 2;
+  int64 followee = 3;
+  uint32 status = 4;
+}
+
+message UserIDList {
+  repeated int64 uids = 1;
+}
+
+message FollowerCountResp {
+  uint32 count = 1;
+}
+
+message FolloweeCountResp {
+  uint32 count = 1;
+}
+
+message GetFollowersReq {
+  int64 uid = 1;
+}
+
+message GetFolloweesReq {
+  int64 uid = 1;
+}
+
+message GetFollowerCountReq {
+  int64 uid = 1;
+}
+
+message GetFolloweeCountReq {
+  int64 uid = 1;
+}
+
+service RelationService {
+  rpc Follow(RelationInfo) returns (google.protobuf.Empty);
+  rpc UnFollow(RelationInfo) returns (google.protobuf.Empty);
+  rpc GetFollowers(GetFollowersReq) returns (UserIDList);
+  rpc GetFollowees(GetFolloweesReq) returns (UserIDList);
+  rpc GetFollowerCount(GetFollowerCountReq) returns (FollowerCountResp);
+  rpc GetFolloweeCount(GetFolloweeCountReq) returns (FolloweeCountResp);
+}
+
