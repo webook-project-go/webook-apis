@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+option go_package = "github.com/webook-project-go/webook-apis/gen/go/apis/article/v1";
+
+service ArticleService {
+  rpc Save(SaveRequest) returns (SaveResponse);
+  rpc Publish(PublishRequest) returns (PublishResponse);
+  rpc ListPublished(ListPublishedRequest) returns (ListPublishedResponse);
+  rpc ListEdited(ListEditedRequest) returns (ListEditedResponse);
+  rpc GetPublishedByID(GetPublishedByIDRequest) returns (GetPublishedByIDResponse);
+  rpc GetEditedByID(GetEditedByIDRequest) returns (GetEditedByIDResponse);
+}
+
+enum ArticleStatus {
+  UNKNOWN = 0;
+  UNPUBLISHED = 1;
+  PUBLISHED = 2;
+  PRIVATE = 3;
+}
+
+message Article {
+  int64 id = 1;
+  string title = 2;
+  string content = 3;
+  int64 author_id = 4;
+  ArticleStatus status = 5;
+  int64 ctime = 6;
+  int64 utime = 7;
+}
+
+message SaveRequest {
+  Article article = 1;
+}
+
+message SaveResponse {
+  int64 id = 1;
+}
+
+message PublishRequest {
+  Article article = 1;
+}
+
+message PublishResponse {
+  int64 id = 1;
+}
+
+message ListPublishedRequest {
+  int64 uid = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+}
+
+message ListPublishedResponse {
+  repeated Article articles = 1;
+}
+
+message ListEditedRequest {
+  int64 uid = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+}
+
+message ListEditedResponse {
+  repeated Article articles = 1;
+}
+
+message GetPublishedByIDRequest {
+  int64 aid = 1;
+}
+
+message GetPublishedByIDResponse {
+  Article article = 1;
+}
+
+message GetEditedByIDRequest {
+  int64 aid = 1;
+  int64 uid = 2;
+}
+
+message GetEditedByIDResponse {
+  Article article = 1;
+}
+
+
