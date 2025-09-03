@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option go_package = "github.com/webook-project-go/webook-apis/gen/go/apis/active/v1";
+
+service ActiveService {
+  rpc IsActive(IsActiveRequest) returns (IsActiveResponse);
+
+  rpc GetLastActiveAt(GetLastActiveAtRequest) returns (GetLastActiveAtResponse);
+
+  rpc GetActiveUsers(GetActiveUsersRequest) returns (GetActiveUsersResponse);
+}
+
+
+message IsActiveRequest {
+  int64 uid = 1;
+}
+
+message IsActiveResponse {
+  bool active = 1;
+}
+
+message GetLastActiveAtRequest {
+  int64 uid = 1;
+}
+
+message GetLastActiveAtResponse {
+  int64 last_active_at = 1;
+}
+
+message GetActiveUsersRequest {
+  int64 since = 1;
+  int64 limit = 2;
+}
+
+message GetActiveUsersResponse {
+  repeated int64 uids = 1;
+}
