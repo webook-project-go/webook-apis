@@ -22,6 +22,7 @@ const (
 	ActiveService_IsActive_FullMethodName        = "/ActiveService/IsActive"
 	ActiveService_GetLastActiveAt_FullMethodName = "/ActiveService/GetLastActiveAt"
 	ActiveService_GetActiveUsers_FullMethodName  = "/ActiveService/GetActiveUsers"
+	ActiveService_ActiveFilters_FullMethodName   = "/ActiveService/ActiveFilters"
 )
 
 // ActiveServiceClient is the client API for ActiveService service.
@@ -31,6 +32,7 @@ type ActiveServiceClient interface {
 	IsActive(ctx context.Context, in *IsActiveRequest, opts ...grpc.CallOption) (*IsActiveResponse, error)
 	GetLastActiveAt(ctx context.Context, in *GetLastActiveAtRequest, opts ...grpc.CallOption) (*GetLastActiveAtResponse, error)
 	GetActiveUsers(ctx context.Context, in *GetActiveUsersRequest, opts ...grpc.CallOption) (*GetActiveUsersResponse, error)
+	ActiveFilters(ctx context.Context, in *ActiveFiltersRequest, opts ...grpc.CallOption) (*ActiveFiltersResponse, error)
 }
 
 type activeServiceClient struct {
@@ -71,6 +73,16 @@ func (c *activeServiceClient) GetActiveUsers(ctx context.Context, in *GetActiveU
 	return out, nil
 }
 
+func (c *activeServiceClient) ActiveFilters(ctx context.Context, in *ActiveFiltersRequest, opts ...grpc.CallOption) (*ActiveFiltersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ActiveFiltersResponse)
+	err := c.cc.Invoke(ctx, ActiveService_ActiveFilters_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ActiveServiceServer is the server API for ActiveService service.
 // All implementations must embed UnimplementedActiveServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type ActiveServiceServer interface {
 	IsActive(context.Context, *IsActiveRequest) (*IsActiveResponse, error)
 	GetLastActiveAt(context.Context, *GetLastActiveAtRequest) (*GetLastActiveAtResponse, error)
 	GetActiveUsers(context.Context, *GetActiveUsersRequest) (*GetActiveUsersResponse, error)
+	ActiveFilters(context.Context, *ActiveFiltersRequest) (*ActiveFiltersResponse, error)
 	mustEmbedUnimplementedActiveServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedActiveServiceServer) GetLastActiveAt(context.Context, *GetLas
 }
 func (UnimplementedActiveServiceServer) GetActiveUsers(context.Context, *GetActiveUsersRequest) (*GetActiveUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetActiveUsers not implemented")
+}
+func (UnimplementedActiveServiceServer) ActiveFilters(context.Context, *ActiveFiltersRequest) (*ActiveFiltersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ActiveFilters not implemented")
 }
 func (UnimplementedActiveServiceServer) mustEmbedUnimplementedActiveServiceServer() {}
 func (UnimplementedActiveServiceServer) testEmbeddedByValue()                       {}
@@ -172,6 +188,24 @@ func _ActiveService_GetActiveUsers_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ActiveService_ActiveFilters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ActiveFiltersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ActiveServiceServer).ActiveFilters(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ActiveService_ActiveFilters_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ActiveServiceServer).ActiveFilters(ctx, req.(*ActiveFiltersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ActiveService_ServiceDesc is the grpc.ServiceDesc for ActiveService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var ActiveService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetActiveUsers",
 			Handler:    _ActiveService_GetActiveUsers_Handler,
+		},
+		{
+			MethodName: "ActiveFilters",
+			Handler:    _ActiveService_ActiveFilters_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

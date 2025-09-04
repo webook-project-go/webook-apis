@@ -8,8 +8,17 @@ service ActiveService {
   rpc GetLastActiveAt(GetLastActiveAtRequest) returns (GetLastActiveAtResponse);
 
   rpc GetActiveUsers(GetActiveUsersRequest) returns (GetActiveUsersResponse);
+
+  rpc ActiveFilters(ActiveFiltersRequest) returns (ActiveFiltersResponse);
 }
 
+message ActiveFiltersRequest {
+  repeated int64 uids = 1;
+}
+
+message ActiveFiltersResponse {
+  repeated int64 active_uids = 1;
+}
 
 message IsActiveRequest {
   int64 uid = 1;

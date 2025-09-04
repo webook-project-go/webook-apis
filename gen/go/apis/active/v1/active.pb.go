@@ -21,6 +21,94 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ActiveFiltersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uids          []int64                `protobuf:"varint,1,rep,packed,name=uids,proto3" json:"uids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActiveFiltersRequest) Reset() {
+	*x = ActiveFiltersRequest{}
+	mi := &file_apis_active_v1_active_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActiveFiltersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActiveFiltersRequest) ProtoMessage() {}
+
+func (x *ActiveFiltersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_apis_active_v1_active_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActiveFiltersRequest.ProtoReflect.Descriptor instead.
+func (*ActiveFiltersRequest) Descriptor() ([]byte, []int) {
+	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ActiveFiltersRequest) GetUids() []int64 {
+	if x != nil {
+		return x.Uids
+	}
+	return nil
+}
+
+type ActiveFiltersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ActiveUids    []int64                `protobuf:"varint,1,rep,packed,name=active_uids,json=activeUids,proto3" json:"active_uids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActiveFiltersResponse) Reset() {
+	*x = ActiveFiltersResponse{}
+	mi := &file_apis_active_v1_active_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActiveFiltersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActiveFiltersResponse) ProtoMessage() {}
+
+func (x *ActiveFiltersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_apis_active_v1_active_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActiveFiltersResponse.ProtoReflect.Descriptor instead.
+func (*ActiveFiltersResponse) Descriptor() ([]byte, []int) {
+	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ActiveFiltersResponse) GetActiveUids() []int64 {
+	if x != nil {
+		return x.ActiveUids
+	}
+	return nil
+}
+
 type IsActiveRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           int64                  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
@@ -30,7 +118,7 @@ type IsActiveRequest struct {
 
 func (x *IsActiveRequest) Reset() {
 	*x = IsActiveRequest{}
-	mi := &file_apis_active_v1_active_proto_msgTypes[0]
+	mi := &file_apis_active_v1_active_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +130,7 @@ func (x *IsActiveRequest) String() string {
 func (*IsActiveRequest) ProtoMessage() {}
 
 func (x *IsActiveRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apis_active_v1_active_proto_msgTypes[0]
+	mi := &file_apis_active_v1_active_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +143,7 @@ func (x *IsActiveRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IsActiveRequest.ProtoReflect.Descriptor instead.
 func (*IsActiveRequest) Descriptor() ([]byte, []int) {
-	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{0}
+	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *IsActiveRequest) GetUid() int64 {
@@ -74,7 +162,7 @@ type IsActiveResponse struct {
 
 func (x *IsActiveResponse) Reset() {
 	*x = IsActiveResponse{}
-	mi := &file_apis_active_v1_active_proto_msgTypes[1]
+	mi := &file_apis_active_v1_active_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +174,7 @@ func (x *IsActiveResponse) String() string {
 func (*IsActiveResponse) ProtoMessage() {}
 
 func (x *IsActiveResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apis_active_v1_active_proto_msgTypes[1]
+	mi := &file_apis_active_v1_active_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +187,7 @@ func (x *IsActiveResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IsActiveResponse.ProtoReflect.Descriptor instead.
 func (*IsActiveResponse) Descriptor() ([]byte, []int) {
-	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{1}
+	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *IsActiveResponse) GetActive() bool {
@@ -118,7 +206,7 @@ type GetLastActiveAtRequest struct {
 
 func (x *GetLastActiveAtRequest) Reset() {
 	*x = GetLastActiveAtRequest{}
-	mi := &file_apis_active_v1_active_proto_msgTypes[2]
+	mi := &file_apis_active_v1_active_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +218,7 @@ func (x *GetLastActiveAtRequest) String() string {
 func (*GetLastActiveAtRequest) ProtoMessage() {}
 
 func (x *GetLastActiveAtRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apis_active_v1_active_proto_msgTypes[2]
+	mi := &file_apis_active_v1_active_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +231,7 @@ func (x *GetLastActiveAtRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLastActiveAtRequest.ProtoReflect.Descriptor instead.
 func (*GetLastActiveAtRequest) Descriptor() ([]byte, []int) {
-	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{2}
+	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetLastActiveAtRequest) GetUid() int64 {
@@ -162,7 +250,7 @@ type GetLastActiveAtResponse struct {
 
 func (x *GetLastActiveAtResponse) Reset() {
 	*x = GetLastActiveAtResponse{}
-	mi := &file_apis_active_v1_active_proto_msgTypes[3]
+	mi := &file_apis_active_v1_active_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -174,7 +262,7 @@ func (x *GetLastActiveAtResponse) String() string {
 func (*GetLastActiveAtResponse) ProtoMessage() {}
 
 func (x *GetLastActiveAtResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apis_active_v1_active_proto_msgTypes[3]
+	mi := &file_apis_active_v1_active_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -187,7 +275,7 @@ func (x *GetLastActiveAtResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLastActiveAtResponse.ProtoReflect.Descriptor instead.
 func (*GetLastActiveAtResponse) Descriptor() ([]byte, []int) {
-	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{3}
+	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetLastActiveAtResponse) GetLastActiveAt() int64 {
@@ -207,7 +295,7 @@ type GetActiveUsersRequest struct {
 
 func (x *GetActiveUsersRequest) Reset() {
 	*x = GetActiveUsersRequest{}
-	mi := &file_apis_active_v1_active_proto_msgTypes[4]
+	mi := &file_apis_active_v1_active_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -219,7 +307,7 @@ func (x *GetActiveUsersRequest) String() string {
 func (*GetActiveUsersRequest) ProtoMessage() {}
 
 func (x *GetActiveUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apis_active_v1_active_proto_msgTypes[4]
+	mi := &file_apis_active_v1_active_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -232,7 +320,7 @@ func (x *GetActiveUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetActiveUsersRequest.ProtoReflect.Descriptor instead.
 func (*GetActiveUsersRequest) Descriptor() ([]byte, []int) {
-	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{4}
+	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetActiveUsersRequest) GetSince() int64 {
@@ -258,7 +346,7 @@ type GetActiveUsersResponse struct {
 
 func (x *GetActiveUsersResponse) Reset() {
 	*x = GetActiveUsersResponse{}
-	mi := &file_apis_active_v1_active_proto_msgTypes[5]
+	mi := &file_apis_active_v1_active_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -270,7 +358,7 @@ func (x *GetActiveUsersResponse) String() string {
 func (*GetActiveUsersResponse) ProtoMessage() {}
 
 func (x *GetActiveUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apis_active_v1_active_proto_msgTypes[5]
+	mi := &file_apis_active_v1_active_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,7 +371,7 @@ func (x *GetActiveUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetActiveUsersResponse.ProtoReflect.Descriptor instead.
 func (*GetActiveUsersResponse) Descriptor() ([]byte, []int) {
-	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{5}
+	return file_apis_active_v1_active_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetActiveUsersResponse) GetUids() []int64 {
@@ -297,7 +385,12 @@ var File_apis_active_v1_active_proto protoreflect.FileDescriptor
 
 const file_apis_active_v1_active_proto_rawDesc = "" +
 	"\n" +
-	"\x1bapis/active/v1/active.proto\"#\n" +
+	"\x1bapis/active/v1/active.proto\"*\n" +
+	"\x14ActiveFiltersRequest\x12\x12\n" +
+	"\x04uids\x18\x01 \x03(\x03R\x04uids\"8\n" +
+	"\x15ActiveFiltersResponse\x12\x1f\n" +
+	"\vactive_uids\x18\x01 \x03(\x03R\n" +
+	"activeUids\"#\n" +
 	"\x0fIsActiveRequest\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\x03R\x03uid\"*\n" +
 	"\x10IsActiveResponse\x12\x16\n" +
@@ -310,11 +403,12 @@ const file_apis_active_v1_active_proto_rawDesc = "" +
 	"\x05since\x18\x01 \x01(\x03R\x05since\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x03R\x05limit\",\n" +
 	"\x16GetActiveUsersResponse\x12\x12\n" +
-	"\x04uids\x18\x01 \x03(\x03R\x04uids2\xc9\x01\n" +
+	"\x04uids\x18\x01 \x03(\x03R\x04uids2\x89\x02\n" +
 	"\rActiveService\x12/\n" +
 	"\bIsActive\x12\x10.IsActiveRequest\x1a\x11.IsActiveResponse\x12D\n" +
 	"\x0fGetLastActiveAt\x12\x17.GetLastActiveAtRequest\x1a\x18.GetLastActiveAtResponse\x12A\n" +
-	"\x0eGetActiveUsers\x12\x16.GetActiveUsersRequest\x1a\x17.GetActiveUsersResponseB@Z>github.com/webook-project-go/webook-apis/gen/go/apis/active/v1b\x06proto3"
+	"\x0eGetActiveUsers\x12\x16.GetActiveUsersRequest\x1a\x17.GetActiveUsersResponse\x12>\n" +
+	"\rActiveFilters\x12\x15.ActiveFiltersRequest\x1a\x16.ActiveFiltersResponseB@Z>github.com/webook-project-go/webook-apis/gen/go/apis/active/v1b\x06proto3"
 
 var (
 	file_apis_active_v1_active_proto_rawDescOnce sync.Once
@@ -328,24 +422,28 @@ func file_apis_active_v1_active_proto_rawDescGZIP() []byte {
 	return file_apis_active_v1_active_proto_rawDescData
 }
 
-var file_apis_active_v1_active_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_apis_active_v1_active_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_apis_active_v1_active_proto_goTypes = []any{
-	(*IsActiveRequest)(nil),         // 0: IsActiveRequest
-	(*IsActiveResponse)(nil),        // 1: IsActiveResponse
-	(*GetLastActiveAtRequest)(nil),  // 2: GetLastActiveAtRequest
-	(*GetLastActiveAtResponse)(nil), // 3: GetLastActiveAtResponse
-	(*GetActiveUsersRequest)(nil),   // 4: GetActiveUsersRequest
-	(*GetActiveUsersResponse)(nil),  // 5: GetActiveUsersResponse
+	(*ActiveFiltersRequest)(nil),    // 0: ActiveFiltersRequest
+	(*ActiveFiltersResponse)(nil),   // 1: ActiveFiltersResponse
+	(*IsActiveRequest)(nil),         // 2: IsActiveRequest
+	(*IsActiveResponse)(nil),        // 3: IsActiveResponse
+	(*GetLastActiveAtRequest)(nil),  // 4: GetLastActiveAtRequest
+	(*GetLastActiveAtResponse)(nil), // 5: GetLastActiveAtResponse
+	(*GetActiveUsersRequest)(nil),   // 6: GetActiveUsersRequest
+	(*GetActiveUsersResponse)(nil),  // 7: GetActiveUsersResponse
 }
 var file_apis_active_v1_active_proto_depIdxs = []int32{
-	0, // 0: ActiveService.IsActive:input_type -> IsActiveRequest
-	2, // 1: ActiveService.GetLastActiveAt:input_type -> GetLastActiveAtRequest
-	4, // 2: ActiveService.GetActiveUsers:input_type -> GetActiveUsersRequest
-	1, // 3: ActiveService.IsActive:output_type -> IsActiveResponse
-	3, // 4: ActiveService.GetLastActiveAt:output_type -> GetLastActiveAtResponse
-	5, // 5: ActiveService.GetActiveUsers:output_type -> GetActiveUsersResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	2, // 0: ActiveService.IsActive:input_type -> IsActiveRequest
+	4, // 1: ActiveService.GetLastActiveAt:input_type -> GetLastActiveAtRequest
+	6, // 2: ActiveService.GetActiveUsers:input_type -> GetActiveUsersRequest
+	0, // 3: ActiveService.ActiveFilters:input_type -> ActiveFiltersRequest
+	3, // 4: ActiveService.IsActive:output_type -> IsActiveResponse
+	5, // 5: ActiveService.GetLastActiveAt:output_type -> GetLastActiveAtResponse
+	7, // 6: ActiveService.GetActiveUsers:output_type -> GetActiveUsersResponse
+	1, // 7: ActiveService.ActiveFilters:output_type -> ActiveFiltersResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -362,7 +460,7 @@ func file_apis_active_v1_active_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apis_active_v1_active_proto_rawDesc), len(file_apis_active_v1_active_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
