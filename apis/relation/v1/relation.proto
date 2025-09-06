@@ -24,10 +24,14 @@ message FolloweeCountResp {
 
 message GetFollowersReq {
   int64 uid = 1;
+  int64 lastID =2;
+  int32 limit = 3;
 }
 
 message GetFolloweesReq {
   int64 uid = 1;
+  int64 lastID =2;
+  int32 limit = 3;
 }
 
 message GetFollowerCountReq {

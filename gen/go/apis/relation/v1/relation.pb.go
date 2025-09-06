@@ -217,6 +217,8 @@ func (x *FolloweeCountResp) GetCount() uint32 {
 type GetFollowersReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           int64                  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	LastID        int64                  `protobuf:"varint,2,opt,name=lastID,proto3" json:"lastID,omitempty"`
+	Limit         int32                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -258,9 +260,25 @@ func (x *GetFollowersReq) GetUid() int64 {
 	return 0
 }
 
+func (x *GetFollowersReq) GetLastID() int64 {
+	if x != nil {
+		return x.LastID
+	}
+	return 0
+}
+
+func (x *GetFollowersReq) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
 type GetFolloweesReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           int64                  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	LastID        int64                  `protobuf:"varint,2,opt,name=lastID,proto3" json:"lastID,omitempty"`
+	Limit         int32                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -298,6 +316,20 @@ func (*GetFolloweesReq) Descriptor() ([]byte, []int) {
 func (x *GetFolloweesReq) GetUid() int64 {
 	if x != nil {
 		return x.Uid
+	}
+	return 0
+}
+
+func (x *GetFolloweesReq) GetLastID() int64 {
+	if x != nil {
+		return x.LastID
+	}
+	return 0
+}
+
+func (x *GetFolloweesReq) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
 	}
 	return 0
 }
@@ -405,11 +437,15 @@ const file_apis_relation_v1_relation_proto_rawDesc = "" +
 	"\x11FollowerCountResp\x12\x14\n" +
 	"\x05count\x18\x01 \x01(\rR\x05count\")\n" +
 	"\x11FolloweeCountResp\x12\x14\n" +
-	"\x05count\x18\x01 \x01(\rR\x05count\"#\n" +
+	"\x05count\x18\x01 \x01(\rR\x05count\"Q\n" +
 	"\x0fGetFollowersReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\x03R\x03uid\"#\n" +
+	"\x03uid\x18\x01 \x01(\x03R\x03uid\x12\x16\n" +
+	"\x06lastID\x18\x02 \x01(\x03R\x06lastID\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\"Q\n" +
 	"\x0fGetFolloweesReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\x03R\x03uid\"'\n" +
+	"\x03uid\x18\x01 \x01(\x03R\x03uid\x12\x16\n" +
+	"\x06lastID\x18\x02 \x01(\x03R\x06lastID\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\"'\n" +
 	"\x13GetFollowerCountReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\x03R\x03uid\"'\n" +
 	"\x13GetFolloweeCountReq\x12\x10\n" +
