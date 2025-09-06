@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package = "github.com/webook-project-go/webook-apis/gen/go/apis/relation/v1";
+
+enum EventType {
+  UNKNOWN_EVENT = 0;
+  ARTICLE_EVENT = 1;
+  LIKE_EVENT = 2;
+  COMMENT_EVENT = 3;
+}
+
+message FeedEvent {
+  int64 id = 1;
+  int64 target_id = 2;
+  int64 actor_id = 3;
+  EventType type = 4;
+  map<string, string> metadata = 5;
+  int64 ctime = 6;
+}
+
+message GetFeedEventRequest {
+  int64 uid = 1;
+  int64 timestamp = 2;
+  int32 limit = 3;
+  EventType type = 4;
+}
+
+message GetFeedEventResponse {
+  repeated FeedEvent events = 1;
+}
+
+service FeedService {
+  rpc GetFeedEvent(GetFeedEventRequest) returns (GetFeedEventResponse);
+}
