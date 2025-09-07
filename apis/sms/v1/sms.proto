@@ -1,0 +1,31 @@
+syntax = "proto3";
+option go_package = "github.com/webook-project-go/webook-apis/gen/go/apis/sms/v1";
+
+
+service SMSService {
+  rpc Send(SendRequest) returns (SendResponse);
+  rpc SendCode(SendCodeRequest) returns (SendCodeResponse);
+  rpc VerifyCode(VerifyCodeRequest) returns (VerifyCodeResponse);
+}
+
+message SendRequest{
+  string Phone = 1;
+  string Content = 2;
+}
+message SendResponse{
+}
+message SendCodeRequest{
+  string biz = 1;
+  string phone = 2;
+}
+message SendCodeResponse{
+}
+
+message VerifyCodeRequest{
+  string biz =1;
+  string phone = 2;
+  int32 code = 3;
+}
+message VerifyCodeResponse{
+  bool OK = 1;
+}
