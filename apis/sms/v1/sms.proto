@@ -19,6 +19,7 @@ message SendCodeRequest{
   string phone = 2;
 }
 message SendCodeResponse{
+  int32 Code = 1;
 }
 
 message VerifyCodeRequest{
@@ -28,4 +29,5 @@ message VerifyCodeRequest{
 }
 message VerifyCodeResponse{
   bool OK = 1;
+  int32 Code = 2;
 }

@@ -34,12 +34,16 @@ message Oauth2Binding {
 message SignUpRequest {
   User user = 1;
 }
-message SignUpResponse {}
+message SignUpResponse {
+  int32 Code =1;
+}
 
 message EditRequest {
   User user = 1;
 }
-message EditResponse {}
+message EditResponse {
+  int32  Code = 1;
+}
 
 message FindUserByEmailRequest {
   string email = 1;
