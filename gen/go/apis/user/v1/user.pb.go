@@ -235,6 +235,7 @@ func (x *SignUpRequest) GetUser() *User {
 
 type SignUpResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          int32                  `protobuf:"varint,1,opt,name=Code,proto3" json:"Code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -267,6 +268,13 @@ func (x *SignUpResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SignUpResponse.ProtoReflect.Descriptor instead.
 func (*SignUpResponse) Descriptor() ([]byte, []int) {
 	return file_apis_user_v1_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SignUpResponse) GetCode() int32 {
+	if x != nil {
+		return x.Code
+	}
+	return 0
 }
 
 type EditRequest struct {
@@ -315,6 +323,7 @@ func (x *EditRequest) GetUser() *User {
 
 type EditResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          int32                  `protobuf:"varint,1,opt,name=Code,proto3" json:"Code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -347,6 +356,13 @@ func (x *EditResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use EditResponse.ProtoReflect.Descriptor instead.
 func (*EditResponse) Descriptor() ([]byte, []int) {
 	return file_apis_user_v1_user_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *EditResponse) GetCode() int32 {
+	if x != nil {
+		return x.Code
+	}
+	return 0
 }
 
 type FindUserByEmailRequest struct {
@@ -738,11 +754,13 @@ const file_apis_user_v1_user_proto_rawDesc = "" +
 	"externalId\x12!\n" +
 	"\faccess_token\x18\x05 \x01(\tR\vaccessToken\"*\n" +
 	"\rSignUpRequest\x12\x19\n" +
-	"\x04user\x18\x01 \x01(\v2\x05.UserR\x04user\"\x10\n" +
-	"\x0eSignUpResponse\"(\n" +
+	"\x04user\x18\x01 \x01(\v2\x05.UserR\x04user\"$\n" +
+	"\x0eSignUpResponse\x12\x12\n" +
+	"\x04Code\x18\x01 \x01(\x05R\x04Code\"(\n" +
 	"\vEditRequest\x12\x19\n" +
-	"\x04user\x18\x01 \x01(\v2\x05.UserR\x04user\"\x0e\n" +
-	"\fEditResponse\".\n" +
+	"\x04user\x18\x01 \x01(\v2\x05.UserR\x04user\"\"\n" +
+	"\fEditResponse\x12\x12\n" +
+	"\x04Code\x18\x01 \x01(\x05R\x04Code\".\n" +
 	"\x16FindUserByEmailRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\"%\n" +
 	"\x13FindUserByIdRequest\x12\x0e\n" +

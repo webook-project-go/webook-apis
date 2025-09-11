@@ -163,6 +163,7 @@ func (x *SendCodeRequest) GetPhone() string {
 
 type SendCodeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          int32                  `protobuf:"varint,1,opt,name=Code,proto3" json:"Code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -195,6 +196,13 @@ func (x *SendCodeResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SendCodeResponse.ProtoReflect.Descriptor instead.
 func (*SendCodeResponse) Descriptor() ([]byte, []int) {
 	return file_apis_sms_v1_sms_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SendCodeResponse) GetCode() int32 {
+	if x != nil {
+		return x.Code
+	}
+	return 0
 }
 
 type VerifyCodeRequest struct {
@@ -260,6 +268,7 @@ func (x *VerifyCodeRequest) GetCode() int32 {
 type VerifyCodeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	OK            bool                   `protobuf:"varint,1,opt,name=OK,proto3" json:"OK,omitempty"`
+	Code          int32                  `protobuf:"varint,2,opt,name=Code,proto3" json:"Code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -301,6 +310,13 @@ func (x *VerifyCodeResponse) GetOK() bool {
 	return false
 }
 
+func (x *VerifyCodeResponse) GetCode() int32 {
+	if x != nil {
+		return x.Code
+	}
+	return 0
+}
+
 var File_apis_sms_v1_sms_proto protoreflect.FileDescriptor
 
 const file_apis_sms_v1_sms_proto_rawDesc = "" +
@@ -312,14 +328,16 @@ const file_apis_sms_v1_sms_proto_rawDesc = "" +
 	"\fSendResponse\"9\n" +
 	"\x0fSendCodeRequest\x12\x10\n" +
 	"\x03biz\x18\x01 \x01(\tR\x03biz\x12\x14\n" +
-	"\x05phone\x18\x02 \x01(\tR\x05phone\"\x12\n" +
-	"\x10SendCodeResponse\"O\n" +
+	"\x05phone\x18\x02 \x01(\tR\x05phone\"&\n" +
+	"\x10SendCodeResponse\x12\x12\n" +
+	"\x04Code\x18\x01 \x01(\x05R\x04Code\"O\n" +
 	"\x11VerifyCodeRequest\x12\x10\n" +
 	"\x03biz\x18\x01 \x01(\tR\x03biz\x12\x14\n" +
 	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x12\n" +
-	"\x04code\x18\x03 \x01(\x05R\x04code\"$\n" +
+	"\x04code\x18\x03 \x01(\x05R\x04code\"8\n" +
 	"\x12VerifyCodeResponse\x12\x0e\n" +
-	"\x02OK\x18\x01 \x01(\bR\x02OK2\x99\x01\n" +
+	"\x02OK\x18\x01 \x01(\bR\x02OK\x12\x12\n" +
+	"\x04Code\x18\x02 \x01(\x05R\x04Code2\x99\x01\n" +
 	"\n" +
 	"SMSService\x12#\n" +
 	"\x04Send\x12\f.SendRequest\x1a\r.SendResponse\x12/\n" +
