@@ -508,6 +508,7 @@ func (x *FindUserRequest) GetValue() string {
 type FindUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	Code          int32                  `protobuf:"varint,2,opt,name=Code,proto3" json:"Code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -547,6 +548,13 @@ func (x *FindUserResponse) GetUser() *User {
 		return x.User
 	}
 	return nil
+}
+
+func (x *FindUserResponse) GetCode() int32 {
+	if x != nil {
+		return x.Code
+	}
+	return 0
 }
 
 type FindOrCreateByPhoneRequest struct {
@@ -767,9 +775,10 @@ const file_apis_user_v1_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"=\n" +
 	"\x0fFindUserRequest\x12\x14\n" +
 	"\x05field\x18\x01 \x01(\tR\x05field\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value\"-\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value\"A\n" +
 	"\x10FindUserResponse\x12\x19\n" +
-	"\x04user\x18\x01 \x01(\v2\x05.UserR\x04user\"2\n" +
+	"\x04user\x18\x01 \x01(\v2\x05.UserR\x04user\x12\x12\n" +
+	"\x04Code\x18\x02 \x01(\x05R\x04Code\"2\n" +
 	"\x1aFindOrCreateByPhoneRequest\x12\x14\n" +
 	"\x05phone\x18\x01 \x01(\tR\x05phone\"@\n" +
 	"\fLoginRequest\x12\x14\n" +

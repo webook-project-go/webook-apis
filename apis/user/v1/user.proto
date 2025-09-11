@@ -58,6 +58,7 @@ message FindUserRequest {
 
 message FindUserResponse {
   User user = 1;
+  int32 Code = 2;
 }
 
 message FindOrCreateByPhoneRequest {
